@@ -1,11 +1,11 @@
-import 'package:bangun_datar_app/controller/persegi_controller.dart';
+import 'package:bangun_datar_app/controller/panjang_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class PersegiPage extends StatelessWidget {
-  PersegiPage({super.key});
-  
-final PersegiController persegiController = Get.put(PersegiController());
+class PanjangPage extends StatelessWidget {
+  PanjangPage({super.key});
+
+  final PanjangController _panjangController = Get.put(PanjangController());
 
   @override
   Widget build(BuildContext context) {
@@ -14,30 +14,30 @@ final PersegiController persegiController = Get.put(PersegiController());
         centerTitle: true,
         backgroundColor: Colors.green.shade300,
         title: Text(
-          "Persegi Page",
+          "PersegiPanjang Page",
           style: TextStyle(color: Colors.white),
         ),
       ),
       body: Column(
         children: [
-          Image.asset("assets/persegi.png", height: 100),
+          Image.asset("assets/persegipanjang.jpg", height: 100),
           Padding(
             padding: EdgeInsets.symmetric(vertical: 16),
-            child: Text("Persegi"),
+            child: Text("Persegi Panjang"),
           ),
           Text(
-              "Persegi atau bujur sangkar adalah bangun datar dua dimensi yang dibentuk oleh empat buah rusuk yang sama panjang dan memiliki empat buah sudut yang kesemuanya adalah sudut siku-siku. Persegi merupakan turunan dari segi empat yang mempunyai ciri khusus keempat sisinya sama panjang dan keempat sudutnya siku-siku."),
+              "Persegi panjang adalah bangun datar dua dimensi yang dibentuk oleh dua pasang sisi yang masing-masing sama panjang dan sejajar dengan pasangannya, dan memiliki empat buah sudut yang kesemuanya adalah sudut siku-siku."),
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: TextFormField(
               onChanged: (value) {
-                persegiController.sisi = int.parse(value);
+                _panjangController.panjang = int.parse(value);
               },
               decoration: InputDecoration(
                   fillColor: Colors.white,
                   filled: true,
-                  labelText: "Sisi",
-                  hintText: "Masukkan Sisi",
+                  labelText: "Panjang",
+                  hintText: "Masukkan Panjang",
                   hintStyle: TextStyle(color: Colors.grey.shade400),
                   contentPadding:
                   EdgeInsets.symmetric(vertical: 4, horizontal: 8),
@@ -52,6 +52,32 @@ final PersegiController persegiController = Get.put(PersegiController());
                       borderRadius: BorderRadius.all(Radius.circular(10)))),
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: TextFormField(
+              onChanged: (value) {
+                _panjangController.lebar = int.parse(value);
+              },
+              decoration: InputDecoration(
+                  fillColor: Colors.white,
+                  filled: true,
+                  labelText: "Lebar",
+                  hintText: "Masukkan Lebar",
+                  hintStyle: TextStyle(color: Colors.grey.shade400),
+                  contentPadding:
+                  EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide(width: 1, color: Colors.grey),
+                      borderRadius: BorderRadius.all(Radius.circular(10))),
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(width: 1, color: Colors.grey),
+                      borderRadius: BorderRadius.all(Radius.circular(10))),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(width: 1, color: Colors.blue),
+                      borderRadius: BorderRadius.all(Radius.circular(10)))),
+            ),
+
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -62,7 +88,7 @@ final PersegiController persegiController = Get.put(PersegiController());
                         foregroundColor: Colors.white, // text color
                         backgroundColor: Colors.redAccent),
                     onPressed: () {
-                      persegiController.hitungLuas();
+                      _panjangController.hitungLuas();
                     },
                     child: Text("Hitung Luas")),
               ),
@@ -71,16 +97,16 @@ final PersegiController persegiController = Get.put(PersegiController());
                       foregroundColor: Colors.white, // text color
                       backgroundColor: Colors.blueAccent),
                   onPressed: () {
-                    persegiController.hitungKeliling();
+                    _panjangController.hitungKeliling();
                   },
                   child: Text("Hitung Keliling")),
             ],
           ),
           Obx(
                 () => Text(
-              persegiController.hasil.value,
+              _panjangController.hasil.value,
               style: TextStyle(
-                color: persegiController.isHitungLuas.value
+                color: _panjangController.isHitungLuas.value
                     ? Colors.blue
                     : Colors.deepPurpleAccent,
               ),

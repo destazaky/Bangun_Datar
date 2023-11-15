@@ -1,16 +1,20 @@
 import 'package:get/get.dart';
 
 class PersegiController extends GetxController{
-  int sisi = 0;
-  final hasil = "".obs;
-  final kel = "".obs;
+  RxBool isHitungLuas = true.obs;
 
-  void hitungLuas(){
-    int hitung = sisi * sisi;
-    hasil.value = "Hasil perhitungan dari $sisi x $sisi = $hitung";
+  int sisi = 0;
+
+  final hasil = "".obs;
+
+  void hitungLuas() {
+    int hitung = sisi * sisi  ;
+    hasil.value = "Hasil perhitungan luas dari $sisi x $sisi = $hitung";
+    isHitungLuas.value = true;
   }
-  void hitungKeliling(){
-    int keliling = sisi * 4;
-    hasil.value = "Hasil perhitungan dari $sisi * 4 = $keliling";
+  void hitungKeliling() {
+    int hitung = sisi * 4;
+    hasil.value = "Hasil perhitungan keliling dari $sisi + $sisi + $sisi + $sisi = $hitung";
+    isHitungLuas.value = false;
   }
 }

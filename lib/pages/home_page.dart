@@ -1,4 +1,7 @@
+import 'package:bangun_datar_app/pages/LingkaranPage.dart';
 import 'package:bangun_datar_app/pages/PersegiPage.dart';
+import 'package:bangun_datar_app/pages/SegitigaPage.dart';
+import 'package:bangun_datar_app/pages/panjangPage.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -22,14 +25,28 @@ class HomePage extends StatelessWidget {
             Navigator.push(context, MaterialPageRoute(builder:(context)=>PersegiPage()));
           }
           ,child: CustomMenu(imageAssets: "assets/persegi.png",title: "Persegi",)),
-          Row(
-            children: [
-              Expanded(child: CustomMenu(imageAssets: "assets/segitiga.jpg",title: "Segitiga",)),
-              Expanded(child: CustomMenu(imageAssets: "assets/segitiga.jpg",title: "Segitiga",)),
-              Expanded(child: CustomMenu(imageAssets: "assets/segitiga.jpg",title: "Segitiga",)),
+
+          InkWell(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder:(context)=>PanjangPage()));
+              }
+              ,child: CustomMenu(imageAssets: "assets/persegipanjang.jpg",title: "Persegi Panjang",)),
+
+          InkWell(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder:(context)=>SegitigaPage()));
+              }
+              ,child: CustomMenu(imageAssets: "assets/segitiga.jpg",title: "Segitiga",)),
+
+          InkWell(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder:(context)=>LingkaranPage()));
+              }
+              ,child: CustomMenu(imageAssets: "assets/Lingkaran.png",title: "Lingkaran",)),
+
             ],
-          )
-         ],
+
+
       ),
     );
   }
